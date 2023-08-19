@@ -19,8 +19,8 @@ interface TextProps {
   opacity?: number;
 }
 
-/*
- * @deprecated
+/**
+ *  @deprecated due to accessibility issues.
  */
 export const CustomText = styled.p<TextProps>`
   text-align: ${(props) => props.align || "center"};
