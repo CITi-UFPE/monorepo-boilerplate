@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./src --ext .ts",
+    "lint": "next lint",
     "postinstall": "prisma generate",
     "prod": "yarn migration:deploy && yarn start",
     "migration": "cross-env DATABASE_HOST='localhost' yarn prisma migrate dev",
