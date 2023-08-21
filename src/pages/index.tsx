@@ -6,6 +6,9 @@ import { api } from "@/utils/api";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "CITi!" });
+  const createExample = api.example.create.useMutation();
+  const getAllExamples = api.example.getAll.useQuery();
+
   return (
     <Container>
       <ImageContainer>
@@ -21,6 +24,19 @@ export default function Home() {
       <CustomText regular white secondary>
         {hello.data?.greeting}
       </CustomText>
+      <button
+        onClick={async () => {
+          await createExample.mutateAsync({ name: "CITi" });
+          getAllExamples.refetch();
+        }}
+      >
+        Create
+      </button>
+      {getAllExamples.data?.map((example) => (
+        <CustomText key={example.id} regular white secondary>
+          {example.name}
+        </CustomText>
+      ))}
     </Container>
   );
 }
