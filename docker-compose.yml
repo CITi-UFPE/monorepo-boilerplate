@@ -1,5 +1,18 @@
 version: "3"
 services:
+  app:
+      platform: "linux/amd64"
+      build:
+        context: .
+        dockerfile: dev.Dockerfile
+      working_dir: /app
+      ports:
+        - "3000:3000"
+      image: t3-app
+      env_file: .env
+      volumes:
+        - .:/app
+        - node_modules:/app/node_modules
   db:
     image: postgres
     container_name: ${PROJECT_NAME}-db
@@ -27,6 +40,7 @@ services:
   #     - "${DATABASE_TEST_PORT}:5432"
 
 volumes:
+  node_modules:
   pgdata:
 
     # Documentação usada para a construção desse arquivo
