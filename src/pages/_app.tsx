@@ -12,7 +12,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <StyleSheetManager shouldForwardProp={() => true}>
+    <StyleSheetManager shouldForwardProp={isPropValid}>
       <ThemeProvider theme={{ ...theme }}>
         <SessionProvider session={session}>
           <GlobalStyle />
