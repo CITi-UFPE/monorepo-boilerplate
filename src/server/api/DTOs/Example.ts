@@ -1,7 +1,10 @@
 import { z } from "zod";
-import { BaseDTO } from ".";
 
-class ExampleDTO extends BaseDTO {
+class ExampleDTO {
+  id = z.object({
+    id: z.string(),
+  });
+
   hello = z.object({
     text: z.string(),
   });
